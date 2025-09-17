@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homease</title>
+<style>
+body {font-family:Arial,sans-serif; margin:0; padding:0; background:#f5f5f5;}
+nav {display:flex; align-items:center; justify-content:space-between; padding:10px 20px; background:#fff; box-shadow:0 2px 5px rgba(0,0,0,0.1); position: sticky; top:0; z-index:100;}
+nav .logo {font-weight:bold; font-size:24px; color:#333;}
+nav input {margin:0 5px; padding:5px; border-radius:5px; border:1px solid #ccc;}
+nav a {margin-left:15px; text-decoration:none; color:#333; font-weight:500;}
+nav a:hover {color:#007bff;}
+.header {text-align:center; padding:50px 20px;}
+.header h1 {font-size:36px;}
+.services {display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:20px; padding:20px;}
+.services .card {background:#fff; padding:15px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1); text-align:center;}
+.services .card img {width:100%; height:150px; object-fit:cover; border-radius:10px;}
+.services .card h3 {margin:10px 0;}
+.services .card p {margin:5px 0;}
+.services .card a {display:inline-block; margin-top:10px; padding:6px 12px; background:#007bff; color:#fff; border-radius:6px; text-decoration:none;}
+.services .card a:hover {background:#0056b3;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">Homease</div>
+  <input type="text" id="location" placeholder="Enter location or allow current location">
+  <input type="text" id="search" placeholder="Search services...">
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="service.html">Services</a>
+    <a href="booking.html">Bookings</a>
+    <a href="login.html">Login</a>
+    <a href="signup.html">Signup</a>
+  </div>
+</nav>
+<div class="header">
+<h1>Welcome to Homease</h1>
+<p>Your instant home service provider</p>
+</div>
+<div class="services">
+  <div class="card">
+    <img src="images/makeup.jpg" alt="Makeup">
+    <h3>Makeup & Home Salon</h3>
+    <p>2h | ₹500</p>
+    <a href="booking.html">Book Now</a>
+  </div>
+  <div class="card">
+    <img src="images/cleaning.jpg" alt="Cleaning">
+    <h3>House Cleaning</h3>
+    <p>3h | ₹700</p>
+    <a href="booking.html">Book Now</a>
+  </div>
+  <div class="card">
+    <img src="images/plumbing.jpg" alt="Plumbing">
+    <h3>Plumbing & Repairs</h3>
+    <p>1.5h | ₹400</p>
+    <a href="booking.html">Book Now</a>
+  </div>
+</div>
+<script>
+  const locationInput = document.getElementById('location');
+  locationInput?.addEventListener('click', () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(pos => {
+        locationInput.value = `Lat: ${pos.coords.latitude.toFixed(3)}, Lon: ${pos.coords.longitude.toFixed(3)}`;
+      });
+    } else alert('Geolocation not supported');
+  });
+  const searchInput = document.getElementById('search');
+  searchInput?.addEventListener('keypress', e => {
+    if (e.key === 'Enter') alert(`Searching for: ${searchInput.value}`);
+  });
+</script>
+</body>
+</html>
