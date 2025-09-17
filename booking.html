@@ -1,1 +1,74 @@
-PUT THE SAME 12 SERVICE CARDS FROM PREVIOUS BOOKING.HTML EXAMPLE
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking - Homease</title>
+<style>
+body {font-family:Arial,sans-serif; margin:0; padding:0; background:#f5f5f5; color:#333;}
+nav {display:flex; align-items:center; justify-content:space-between; padding:10px 20px; background:#fff; box-shadow:0 2px 5px rgba(0,0,0,0.1); position: sticky; top:0; z-index:100;}
+nav .logo {font-weight:bold; font-size:24px; color:#333;}
+nav input {margin:0 5px; padding:5px; border-radius:5px; border:1px solid #ccc;}
+nav a {margin-left:15px; text-decoration:none; color:#333; font-weight:500;}
+nav a:hover {color:#007bff;}
+.logout-btn {margin-left:15px; padding:6px 12px; background:#ff4d4d; color:#fff; border:none; border-radius:6px; cursor:pointer;}
+.logout-btn:hover {background:#cc0000;}
+h1 {text-align:center; padding:30px 0;}
+.booking-list {display:flex; flex-direction:column; gap:20px; max-width:800px; margin:0 auto; padding:20px;}
+.booking-card {background:#fff; border-radius:12px; padding:20px; box-shadow:0 4px 10px rgba(0,0,0,0.1); display:flex; flex-direction:column; transition: transform 0.3s, box-shadow 0.3s;}
+.booking-card:hover {transform: translateY(-8px); box-shadow:0 6px 15px rgba(0,0,0,0.15);}
+.booking-card .emoji {font-size:40px; margin-bottom:10px; animation: bounce 2s infinite;}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+  40% {transform: translateY(-10px);}
+  60% {transform: translateY(-5px);}
+}
+.booking-card h3 {margin:10px 0;}
+.booking-card p {margin:5px 0; color:#555;}
+.booking-card button {align-self:flex-start; padding:8px 15px; background:#333; color:#fff; border:none; border-radius:6px; cursor:pointer; margin-top:10px;}
+.booking-card button:hover {background:#555;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">Homease</div>
+  <input type="text" id="location" placeholder="Enter location or allow current location">
+  <input type="text" id="search" placeholder="Search services...">
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="service.html">Services</a>
+    <a href="booking.html">Bookings</a>
+    <a href="login.html">Login</a>
+    <a href="signup.html">Signup</a>
+    <button class="logout-btn" id="logoutBtn" style="display:none;">Logout</button>
+  </div>
+</nav>
+
+<h1>Book Your Services</h1>
+<div class="booking-list">
+  <div class="booking-card"><div class="emoji">💄</div><h3>Makeup & Home Salon</h3><p>Duration: 2h | Price: ₹500 | Discount: 10%</p><button>Book Now</button></div>
+  <div class="booking-card"><div class="emoji">💆‍♀️</div><h3>Massage & Spa</h3><p>Duration: 1.5h | Price: ₹600 | Discount: 10%</p><button>Book Now</button></div>
+  <div class="booking-card"><div class="emoji">🧹</div><h3>House Cleaning</h3><p>Duration: 3h | Price: ₹700 | Discount: 15%</p><button>Book Now</button></div>
+  <div class="booking-card"><div class="emoji">🔧</div><h3>Plumbing & Repairs</h3><p>Duration: 1.5h | Price: ₹400 | Discount: 5%</p><button>Book Now</button></div>
+  <div class="booking-card"><div class="emoji">👶</div><h3>Babysitting</h3><p>Duration: 4h | Price: ₹800 | Discount: 10%</p><button>Book Now</button></div>
+  <div class="booking-card"><div class="emoji">🍽️</div><h3>Utensil Cleaning</h3><p>Duration: 2h | Price: ₹300 | Discount: 5%</p><button>Book Now</button></div>
+  <div class="booking-card"><div class="emoji">💡</div><h3>Electric Repair</h3><p>Duration: 2h | Price: ₹500 | Discount: 5%</p><button>Book Now</button></div>
+  <div class="booking-card"><div class="emoji">🖥️</div><h3>Computer/IT Repair</h3><p>Duration: 2h | Price: ₹500 | Discount: 5%</p><button>Book Now</button></div>
+  <div class="booking-card"><div class="emoji">🛠️</div><h3>Appliance Installation</h3><p>Duration: 2h | Price: ₹450 | Discount: 5%</p><button>Book Now</button></div>
+  <div class="booking-card"><div class="emoji">🖌️</div><h3>Painting & Interiors</h3><p>Duration: 5h | Price: ₹1500 | Discount: 10%</p><button>Book Now</button></div>
+  <div class="booking-card"><div class="emoji">🧺</div><h3>Laundry & Dry Cleaning</h3><p>Duration: 3h | Price: ₹600 | Discount: 10%</p><button>Book Now</button></div>
+  <div class="booking-card"><div class="emoji">🌿</div><h3>Gardening</h3><p>Duration: 2h | Price: ₹400 | Discount: 5%</p><button>Book Now</button></div>
+</div>
+
+<script>
+const locationInput = document.getElementById('location');
+locationInput?.addEventListener('click',()=>{if(navigator.geolocation){navigator.geolocation.getCurrentPosition(pos=>{locationInput.value=`Lat: ${pos.coords.latitude.toFixed(3)}, Lon: ${pos.coords.longitude.toFixed(3)}`})}else alert('Geolocation not supported');});
+const searchInput = document.getElementById('search');
+searchInput?.addEventListener('keypress',e=>{if(e.key==='Enter') alert(`Searching for: ${searchInput.value}`);});
+
+// Logout button simulation
+const logoutBtn = document.getElementById('logoutBtn');
+logoutBtn.addEventListener('click', ()=>{alert('Logged out!'); logoutBtn.style.display='none';});
+</script>
+</body>
+</html>
